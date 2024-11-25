@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Search } from "lucide-react";
 import Data from "../Data";
 import MessageList from "../Components/MessageList";
+import Message from "../Components/Message";
 
 const Home = () => {
   const [input, setInput] = useState("");
@@ -71,26 +72,11 @@ const Home = () => {
                 </div>
               )}
             </ul>
-            {/* <MessageList />
-            <MessageList />
-            <MessageList />
-            <MessageList />
-            <MessageList />
-            <MessageList />
-            <MessageList />
-            <MessageList />
-            <MessageList />
-            <MessageList />
-            <MessageList /> */}
           </div>
         </div>
 
         <div className="w-2/3 h-full border border-[#EFEFF1] rounded-2xl p-4 bg-white shadow-xl">
-          <h2 className="text-lg font-bold text-gray-700">Right Panel</h2>
-          <p className="text-sm text-gray-600">
-            This is the right panel content, which is larger than the left
-            panel.
-          </p>
+          <Message />
         </div>
       </div>
     </div>
