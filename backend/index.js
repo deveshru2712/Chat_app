@@ -3,12 +3,32 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 
+import { Server } from "socket.io";
+import { createServer } from "http";
+
 import connectToDb from "./Db/connectToDb.js";
 import authRoutes from "./routes/auth.routes.js";
 import errorMiddleware from "./middleware/errormiddleware.js";
 
 dotenv.config();
+
 const app = express();
+
+const server = createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("user connected");
+  console.log("id:", socket.id);
+});
+
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
@@ -19,7 +39,7 @@ app.use("/api/auth", authRoutes);
 
 app.use(errorMiddleware);
 
-app.listen(port, () => {
+server.listen(port, () => {
   connectToDb();
   console.log("the server is running on the port :", port);
 });
