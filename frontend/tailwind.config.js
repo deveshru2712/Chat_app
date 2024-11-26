@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       boxShadow: {
-        darker: "0 10px 20px rgba(0, 0, 0, 0.1)", // A much darker shadow
+        darker: "0 10px 20px rgba(245, 255, 255, 0.7)", // A much darker shadow
       },
     },
   },

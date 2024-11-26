@@ -3,7 +3,7 @@ import { Menu, Video, Phone } from "lucide-react";
 
 const Message = () => {
   return (
-    <div className="w-full flex justify-center items-center border-2 border-[#F4F4F2] p-2 rounded-lg">
+    <div className="w-full h-fit flex justify-center items-center border-2 border-[#F4F4F2] p-2 rounded-lg">
       <div className="w-full flex justify-between items-center">
         <div className="flex justify-center items-center gap-2">
           <img

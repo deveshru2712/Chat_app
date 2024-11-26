@@ -3,6 +3,8 @@ import { Search } from "lucide-react";
 import Data from "../Data";
 import MessageList from "../Components/MessageList";
 import Message from "../Components/Message";
+import Typing from "../Components/Typing";
+import Display from "../Components/Display";
 
 const Home = () => {
   const [input, setInput] = useState("");
@@ -45,7 +47,7 @@ const Home = () => {
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="font-semibold bg-slate-200 active:outline focus:outline-none overflow-hidden"
+                  className="font-semibold bg-slate-200  focus:outline-none overflow-hidden"
                   value={input}
                   onChange={(e) => {
                     setInput(e.target.value);
@@ -77,8 +79,16 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="w-2/3 h-full border border-[#EFEFF1] rounded-2xl p-4 bg-white shadow-xl">
-          <Message />
+        <div className="w-2/3 h-full border flex flex-col justify-between items-center border-[#EFEFF1] rounded-2xl p-4 bg-white shadow-xl">
+          <div className="w-full">
+            <Message />
+          </div>
+          <div className="w-full flex-grow overflow-auto">
+            <Display />
+          </div>
+          <div className="w-full">
+            <Typing />
+          </div>
         </div>
       </div>
     </div>
