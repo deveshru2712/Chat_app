@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect, useMemo } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { io } from "socket.io-client";
@@ -11,7 +11,21 @@ const Home = lazy(() => import("./Pages/Home"));
 // bg-[url('src/assets/background.jpg')]
 
 const App = () => {
-  const socket = io("http://localhost:3000");
+  const socket = useMemo(() => io("http://localhost:3000"), []);
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("you are connected");
+    });
+
+    socket.on("welcome", (message) => {
+      console.log(message);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  });
 
   return (
     <div className="w-screen h-screen  bg-cover bg-center">

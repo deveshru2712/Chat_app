@@ -21,13 +21,15 @@ const Home = () => {
               <div>
                 <img
                   src="https://avatar.iran.liara.run/public"
-                  alt="user-profile"
+                  alt="user-profile-image"
                   className="w-14 h-14 cursor-pointer"
                 />
               </div>
               <div className="flex flex-col justify-center items-start">
-                <span className="text-xl font-semibold">User Name</span>
-                <span className="text-sm text-slate-500 font-semibold">
+                <span className="text-xl font-semibold text-slate-800">
+                  User Name
+                </span>
+                <span className="text-sm text-slate-600 font-semibold">
                   Account Info
                 </span>
               </div>
@@ -67,7 +69,7 @@ const Home = () => {
                   />
                 ))
               ) : (
-                <div className="flex justify-center items-center text-xl text-slate-600 font-semibold p-3">
+                <div className="flex justify-center items-center text-xl text-slate-800 font-semibold p-3">
                   Say Hello to friend...
                 </div>
               )}

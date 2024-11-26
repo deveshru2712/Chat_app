@@ -9,6 +9,7 @@ import { createServer } from "http";
 import connectToDb from "./Db/connectToDb.js";
 import authRoutes from "./routes/auth.routes.js";
 import errorMiddleware from "./middleware/errormiddleware.js";
+import { log } from "console";
 
 dotenv.config();
 
@@ -25,8 +26,33 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log("user connected");
-  console.log("id:", socket.id);
+  // console.log("user connected :", socket.id);
+
+  {
+    /* tell all the user that a new user is connected*/
+  }
+
+  socket.broadcast.emit(
+    "welcome",
+    `a new user connected to the server ${socket.id}`
+  );
+
+  {
+    /* */
+  }
+
+  socket.on("message", (data) => {
+    console.log(data);
+    io.emit("message", data);
+  });
+
+  {
+    /*user disconnected message*/
+  }
+
+  socket.on("disconnect", () => {
+    console.log("user disconnected:", socket.id);
+  });
 });
 
 app.use(express.json());
